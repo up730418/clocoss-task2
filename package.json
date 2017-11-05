@@ -1,0 +1,24 @@
+{
+  "name": "clocoss-task2",
+  "version": "1.0.0",
+  "description": "clocoss api task",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/up730418/clocoss-task2.git"
+  },
+  "author": "up730418",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/up730418/clocoss-task2/issues"
+  },
+  "homepage": "https://github.com/up730418/clocoss-task2#readme",
+  "dependencies": {
+    "@google-cloud/datastore": "^1.1.0",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2"
+  }
+}
