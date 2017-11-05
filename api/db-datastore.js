@@ -18,14 +18,30 @@ module.exports.list = async () => {
 module.exports.get = async (id) => {
   // asynchronously get the entity
   const [data] = await ds.get(key(id));
-  if (data && data.val) return data.val;
-  return '';
+  if (data && data.val) return data.val.toString();
+  return '0';
 };
 
 module.exports.put = async (id, val) => {
+  const [data] = await ds.get(key(id));
+  if (data && data.val && val != '0'){
+	  try{
+	   val = parseInt(val) + parseInt(data.val);
+	  }
+	  catch(e){
+		  console.log("couldnt parse int")
+	 }
+  }
   const entity = {
     key: key(id),
-    data: { name: id, val },
+    data: { name: id, val},
   }
   await ds.save(entity);
 };
+
+module.exports.delete = async(id) => {
+  const [data] = await ds.delete(key(id));
+  console.log(data.indexUpdates);
+  if(data.indexUpdates > 0) return 'ok';
+  return '';	
+}

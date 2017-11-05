@@ -22,6 +22,7 @@ function init() {
   els.fnw.addEventListener('input', setLoadPending);
   els.load.addEventListener('click', loadFromFNW);
   els.save.addEventListener('click', save);
+  //els.rem.addEventListener('click', del);
   els.sseco.addEventListener('click', toggleSSec);
 }
 
@@ -124,4 +125,13 @@ async function save() {
   }
 
   loadFilenames();
+}
+
+async function del() {
+const name = els.cfn.textContent;
+const response = await fetch(`/api/${name}`, {
+      method: 'DELETE'
+    }); 
+if (!response.ok) throw new Error(`saving returned ${response.status}`);
+
 }
