@@ -8,7 +8,7 @@ git clone https://github.com/up730418/clocoss-task2/
 
 Follow the prompt and enter details of an account authorised to access this repo
 
-once cloned move into the folder and type:
+once cloned move into the folder "clocoss-task2" and type:
 
 sh setup/server-config.sh
 
