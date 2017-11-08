@@ -22,9 +22,22 @@ module.exports.get = async (id) => {
   return '0';
 };
 
-module.exports.put = async (id, val) => {
+module.exports.put = async (id) => {
   const [data] = await ds.get(key(id));
-  if (data && data.val && val != '0'){
+  const val = 0;
+  const entity = {
+    key: key(id),
+    data: { name: id, val},
+  }
+  const [updatedData] = await ds.save(entity);
+
+  if(updatedData.indexUpdates > 0) return `${val}`;
+  return '';
+};
+
+module.exports.post = async (id, val) => {
+  const [data] = await ds.get(key(id));
+  if (data && data.val){
 	  try{
 	   val = parseInt(val) + parseInt(data.val);
 	  }
@@ -36,12 +49,14 @@ module.exports.put = async (id, val) => {
     key: key(id),
     data: { name: id, val},
   }
-  await ds.save(entity);
+  const [updatedData] = await ds.save(entity);
+
+  if(updatedData.indexUpdates > 0) return `${val}`;
+  return '';
 };
 
 module.exports.delete = async(id) => {
   const [data] = await ds.delete(key(id));
-  console.log(data.indexUpdates);
   if(data.indexUpdates > 0) return 'ok';
   return '';	
 }
