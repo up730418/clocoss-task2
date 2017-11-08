@@ -4,7 +4,7 @@
 
 Ensure git is installed. Then:
 
-git clone https://github.com/up730418/clocoss-task1/
+git clone https://github.com/up730418/clocoss-task2/
 
 Follow the prompt and enter details of an account authorised to access this repo
 
