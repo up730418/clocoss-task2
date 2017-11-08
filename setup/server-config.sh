@@ -4,3 +4,6 @@ sudo apt-get install -y nodejs
 
 #Allow conections on 8080
 sudo iptables -A INPUT -i eth0 -p tcp --dport 8080 -j ACCEPT
+
+cd ..
+npm install
