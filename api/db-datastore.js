@@ -23,6 +23,7 @@ module.exports.get = async (id) => {
 };
 
 module.exports.put = async (id) => {
+  //asynchronously restore value of $id to 0
   const [data] = await ds.get(key(id));
   const val = 0;
   const entity = {
@@ -36,6 +37,7 @@ module.exports.put = async (id) => {
 };
 
 module.exports.post = async (id, val) => {
+  //asynchronously update the value of $id	
   const [data] = await ds.get(key(id));
   if (data && data.val){
 	  try{
@@ -56,6 +58,7 @@ module.exports.post = async (id, val) => {
 };
 
 module.exports.delete = async(id) => {
+  //asynchronously delete $id from the DB	
   const [data] = await ds.delete(key(id));
   if(data.indexUpdates > 0) return 'ok';
   return '';	
