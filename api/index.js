@@ -35,7 +35,7 @@ api.put('/:id(\\w+)', async (req, res) => {
                               }
 });
 
-// update an existing name 
+// Add a new name or update an existing name
 api.post('/:id(\\w+)', bodyParser.text(), async (req, res) => {
 	  try {
 		      res.send(await db.post(req.params.id, req.body));
