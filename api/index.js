@@ -25,7 +25,7 @@ api.get('/:id(\\w+)', async (req, res) => {
 			      }
 });
 
-//Add a new name
+//Reset a names value to 0
 api.put('/:id(\\w+)', async (req, res) => {
           try {
                       res.send(await db.put(req.params.id));
