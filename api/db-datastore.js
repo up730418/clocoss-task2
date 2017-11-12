@@ -49,13 +49,13 @@ module.exports.post = async (id, val) => {
   //check if name $id already exists and if so
   // get its current value and adds the new value $val
   if (data && data.val){
-	  try{
-	   val = parseInt(val) + parseInt(data.val);
-	  }
-	  catch(e){
-		  console.log("couldnt parse int");
-		  return'0';
-	 }
+    try{
+      val = parseInt(val) + parseInt(data.val);
+    }
+    catch(e){
+      console.log("couldnt parse int");
+      return'0';
+    }
   }
   const entity = {
     key: key(id),
