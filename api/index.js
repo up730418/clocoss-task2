@@ -5,6 +5,7 @@ module.exports = api;
 
 const db = require('./db-datastore');
 
+//Get a list of all names stored
 api.get('/', async (req, res) => {
 	  try {
 		      res.json(await db.list());
@@ -14,6 +15,7 @@ api.get('/', async (req, res) => {
 			      }
 });
 
+//Get a name and its  number
 api.get('/:id(\\w+)', async (req, res) => {
 	  try {
 		      res.send(await db.get(req.params.id));
@@ -23,6 +25,7 @@ api.get('/:id(\\w+)', async (req, res) => {
 			      }
 });
 
+//Add a new name
 api.put('/:id(\\w+)', async (req, res) => {
           try {
                       res.send(await db.put(req.params.id));
@@ -32,6 +35,7 @@ api.put('/:id(\\w+)', async (req, res) => {
                               }
 });
 
+// update an existing name 
 api.post('/:id(\\w+)', bodyParser.text(), async (req, res) => {
 	  try {
 		      res.send(await db.post(req.params.id, req.body));
@@ -41,7 +45,8 @@ api.post('/:id(\\w+)', bodyParser.text(), async (req, res) => {
 			        res.sendStatus(500);
 			      }
 });
-	
+
+//Remove a name
 api.delete('/:id(\\w+)', async (req, res) => {
           try {
                       await db.delete(req.params.id);
