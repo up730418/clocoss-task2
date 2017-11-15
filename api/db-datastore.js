@@ -9,7 +9,6 @@ function key(id) {
 
 //Return a list of names stored
 module.exports.list = async () => {
-  // asynchronously get a list of entities with names
   let [data] = await ds.createQuery(kind).select('name').order('name').run();
   // extract only the names
   data = data.map((val) => val.name);
@@ -18,17 +17,14 @@ module.exports.list = async () => {
 
 //Return name $id and its value
 module.exports.get = async (id) => {
-  // asynchronously get the entity
   const [data] = await ds.get(key(id));
   if (data && data.val) return data.val.toString();
   return '0';
 };
 
-//Reset name with $id to 0
-module.exports.put = async (id) => {
-  //asynchronously restore value of $id to 0
+//Sets name with $id to $val
+module.exports.put = async (id, val) => {
   const [data] = await ds.get(key(id));
-  const val = 0;
   const entity = {
     key: key(id),
     data: { name: id, val},
@@ -42,8 +38,7 @@ module.exports.put = async (id) => {
 
 //Create new name $id with value $val 
 //Or updated name $id and add value $val to existing value
-module.exports.post = async (id, val) => {
-  //asynchronously update the value of $id	
+module.exports.post = async (id, val) => {	
   const [data] = await ds.get(key(id));
 
   //check if name $id already exists and if so
@@ -68,8 +63,8 @@ module.exports.post = async (id, val) => {
   return '0';
 };
 
-module.exports.delete = async(id) => {
-  //asynchronously delete $id from the DB	
+//Delete $id from the DB
+module.exports.delete = async(id) => {	
   const [data] = await ds.delete(key(id));
 	
   //Check a record has been updated
