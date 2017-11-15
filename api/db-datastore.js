@@ -18,7 +18,7 @@ module.exports.list = async () => {
 //Return name $id and its value
 module.exports.get = async (id) => {
   const [data] = await ds.get(key(id));
-  if (data && data.val) return `${val}`;
+  if (data && data.val) return `${data.val}`;
   return '0';
 };
 
