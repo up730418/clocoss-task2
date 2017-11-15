@@ -25,10 +25,10 @@ api.get('/:id(\\w+)', async (req, res) => {
 			      }
 });
 
-//Reset a names value to 0
-api.put('/:id(\\w+)', async (req, res) => {
+//Sets a names value to number inputed
+api.put('/:id(\\w+)', bodyParser.text(),, async (req, res) => {
           try {
-                      res.send(await db.put(req.params.id));
+                      res.send(await db.put(req.params.id, req.body));
                     } catch (e) {
                                 console.error(e);
                                 res.sendStatus(500);
